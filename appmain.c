@@ -329,12 +329,33 @@ void trylogin_cashier(void) {
     }
 }
 
-void contact_us(void) {
+void contact_us(void) {    
     
-    ClearScreen(4, 26);
-        ShowTitle("CONTACT US                     ");
+    BYTE keyoluoch;
+    //BYTE baBuff[256];
+
+    int x = 0;
+    while (x == 0) {
+        ClearScreen(4, 26);
+        ShowTitle("CONTACT US                     ");    
+        CTOS_LCDTPrintXY(2, 6, "Support@impalapay.com");
+        
+        CTOS_LCDTPrintXY(2, 15, "OK TO Confirm");
+        CTOS_KBDGet(&keyoluoch);
+        
+        if (keyoluoch == d_KBD_ENTER) {
+            x = 1;
+            break;
+        } else {
+            x = 0;
+            return;
+        }
+    }
     
-    CTOS_LCDTPrintXY(2, 6, "Support@impalapay.com");
+//    ClearScreen(4, 26);
+//        ShowTitle("CONTACT US                     ");
+//    
+//    CTOS_LCDTPrintXY(2, 6, "Support@impalapay.com");
  
 }
 
