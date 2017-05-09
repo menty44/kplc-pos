@@ -25,6 +25,7 @@ char *retballance;
 //char *keyfred[]={""};
 //char *keyfredo[] = {"A71Z3hIX2v71PgWNGnlP83IaaQ0XIc37staCXCDVHpE"};
 //char keyfred[43] = {"A71Z3hIX2v71PgWNGnlP83IaaQ0XIc37staCXCDVHpE"};
+char keyfred1[43] = {"A71Z3hIX2v71PgWNGnlP83IaaQ0XIc37staCXCDVHpE"};
 
 
 int validation = 0;
@@ -364,7 +365,7 @@ int curlpostmain(BYTE pin[4], BYTE amount[5]) {
 
 //start freddy checkbal_post
 
-int checkbal_post(BYTE username[255], char keyfred[43]) {
+int checkbal_post(BYTE username[255], char keyfred1[43]) {
 
     BYTE keydan;
     //BYTE sBuf[128];
@@ -378,7 +379,8 @@ int checkbal_post(BYTE username[255], char keyfred[43]) {
         //build json object-string
         root = cJSON_CreateObject();
         cJSON_AddItemToObject(root, "username", cJSON_CreateString(username));
-        cJSON_AddItemToObject(root, "key", cJSON_CreateString("A71Z3hIX2v71PgWNGnlP83IaaQ0XIc37staCXCDVHpE"));
+        //cJSON_AddItemToObject(root, "key", cJSON_CreateString("A71Z3hIX2v71PgWNGnlP83IaaQ0XIc37staCXCDVHpE"));
+         cJSON_AddItemToObject(root, "key", cJSON_CreateString(keyfred1));
 //        cJSON_AddItemToObject(root, "amount", cJSON_CreateString(cdepg_baInputAmt));
 //        cJSON_AddItemToObject(root, "accountnumber", cJSON_CreateString(cdepositaccnt));
 //        cJSON_AddItemToObject(root, "merchantPin", cJSON_CreateString(cdmpin));
@@ -400,6 +402,8 @@ int checkbal_post(BYTE username[255], char keyfred[43]) {
 
         curl = curl_easy_init();
         if (curl) {
+            struct string2 s2;
+            init_string(&s2);
             //char* jsonObj = "{ \"pin\" : \"4444\" , \"amount\" :\"10000\", \"card_number\" : \"72828276766262\" }"; 
             curl_easy_setopt(curl, CURLOPT_URL, "http://test.expresspayments.co.ke:8585/v3/balance");
             struct curl_slist *headers = NULL;
@@ -414,7 +418,8 @@ int checkbal_post(BYTE username[255], char keyfred[43]) {
             //res = curl_easy_perform(curl);
             //CTOS_LCDTPrintXY(4, 4, " Response is");
             /* Check for errors */
-            long http_code = 0;
+            //long http_code = 0;
+            long http_code;
             curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
             if (http_code == 200 && res != CURLE_ABORTED_BY_CALLBACK) {
                 ClearScreen(4, 26);

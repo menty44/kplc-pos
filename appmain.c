@@ -577,60 +577,63 @@ void kplc_admin_menu() {
         loggin[1] = '1';
         CTOS_PowerAutoModeEnable();
         CTOS_LCDTClearDisplay();
-//        ShowTitle("ADMINISTRATOR MENU                ");
-//        CTOS_LCDTPrintXY(3, 5, "1. Agency Menu");
-//        //CTOS_LCDTPrintXY(3, 6, "2. Create Users");
-//        CTOS_LCDTPrintXY(3, 6, "2. Check Balance");
-//        CTOS_LCDTPrintXY(3, 7, "3. Manage User");
-//        CTOS_LCDTPrintXY(3, 8, "4. Batch Upload");
-//        CTOS_LCDTPrintXY(3, 9, "5. Reconcl Repots");
-//        CTOS_LCDTPrintXY(3, 10, "6. Repair Coms");
-//        CTOS_LCDTPrintXY(3, 11, "7. Conn Status");
-//        CTOS_LCDTPrintXY(3, 12, "8. Settings");
-//        CTOS_LCDTPrintXY(1, 15, "              X-Logout");
+        //        ShowTitle("ADMINISTRATOR MENU                ");
+        //        CTOS_LCDTPrintXY(3, 5, "1. Agency Menu");
+        //        //CTOS_LCDTPrintXY(3, 6, "2. Create Users");
+        //        CTOS_LCDTPrintXY(3, 6, "2. Check Balance");
+        //        CTOS_LCDTPrintXY(3, 7, "3. Manage User");
+        //        CTOS_LCDTPrintXY(3, 8, "4. Batch Upload");
+        //        CTOS_LCDTPrintXY(3, 9, "5. Reconcl Repots");
+        //        CTOS_LCDTPrintXY(3, 10, "6. Repair Coms");
+        //        CTOS_LCDTPrintXY(3, 11, "7. Conn Status");
+        //        CTOS_LCDTPrintXY(3, 12, "8. Settings");
+        //        CTOS_LCDTPrintXY(1, 15, "              X-Logout");
 
-                ShowTitle("ADMINISTRATOR MENU                   ");
-                CTOS_LCDTPrintXY(3, 4, "  Agency Menu");
-                CTOS_LCDTPrintXY(3, 5, "             ");
-                CTOS_LCDTPrintXY(3, 6, "1.CHECK BALANCE");
-                CTOS_LCDTPrintXY(3, 7, "2.METER DETAILS");
-                CTOS_LCDTPrintXY(3, 8, "3.Vend Tokens");
-                CTOS_LCDTPrintXY(3, 9, "4.TRANSACTIONS");
-                CTOS_LCDTPrintXY(3, 10,"5.POSTPAID VERIFY BALANCE");
-                CTOS_LCDTPrintXY(3, 11,"6.PAYBILL POSTPAID");
-                CTOS_LCDTPrintXY(3, 12,"7.POSTPAY CHECK TRANSACTIONS");
-                CTOS_LCDTPrintXY(3, 13,"8.PURCHASE AIRTIME");
-                CTOS_LCDTPrintXY(3, 14,"9.CHECK AIRTIME TRANSACTION");
-        CTOS_LCDTPrintXY(1, 15, "              X-Logout");
+        ShowTitle("ADMINISTRATOR MENU                   ");
+        //CTOS_LCDTPrintXY(3, 3, "             ");
+        CTOS_LCDTPrintXY(3, 4, "  Agency Menu");
+        CTOS_LCDTPrintXY(3, 5, "             ");
+        CTOS_LCDTPrintXY(3, 6, "1.CHECK BALANCE");
+        CTOS_LCDTPrintXY(3, 7, "2.METER DETAILS");
+        CTOS_LCDTPrintXY(3, 8, "3.Vend Tokens");
+        CTOS_LCDTPrintXY(3, 9, "4.TRANSACTIONS");
+        CTOS_LCDTPrintXY(3, 10, "5.POSTPAID VERIFY BALANCE");
+        CTOS_LCDTPrintXY(3, 11, "6.PAYBILL POSTPAID");
+        CTOS_LCDTPrintXY(3, 12, "7.POSTPAY CHECK TRANSACTIONS");
+        CTOS_LCDTPrintXY(3, 13, "8.PURCHASE AIRTIME");
+        CTOS_LCDTPrintXY(3, 14, "9.CHECK AIRTIME TRANSACTION");
+        CTOS_LCDTPrintXY(3, 15, "             ");
+        CTOS_LCDTPrintXY(1, 16, "  X-Logout");
+        
         CTOS_KBDGet(&key);
-        switch (key) {
-            case d_KBD_1:
-                agency_menu();
-                break;
-            case d_KBD_2:
-                check_balance();
-                break;
-            case d_KBD_3:
-                break;
-            case d_KBD_4:
-                filemanager();
-                break;
-            case d_KBD_5:
-                filemanager();
-                break;
-            case d_KBD_6:
-                break;
-            case d_KBD_7:
-                break;
-            case d_KBD_8:
-                settings();
-                break;
-                //logout
-            case d_KBD_CANCEL:
-                token = 0;
-                loggin[1] = '0';
-                select_id();
-        }
+            switch (key) {
+                case d_KBD_1:
+                    check_balance();
+                    break;
+                case d_KBD_2:
+                    //check_balance();
+                    break;
+                case d_KBD_3:
+                    break;
+                case d_KBD_4:
+                    filemanager();
+                    break;
+                case d_KBD_5:
+                    filemanager();
+                    break;
+                case d_KBD_6:
+                    break;
+                case d_KBD_7:
+                    break;
+                case d_KBD_8:
+                    settings();
+                    break;
+                    //logout
+                case d_KBD_CANCEL:
+                    token = 0;
+                    loggin[1] = '0';
+                    select_id();
+            }
 
     }
 }
